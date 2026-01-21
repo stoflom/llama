@@ -1,7 +1,5 @@
-#CL
-# CL
 
-This is what I had to do after chatting with Gemini
+# This is what I had to do after chatting with Gemini
 
 ## 1) Install rocm
 ```bash
