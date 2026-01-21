@@ -59,7 +59,7 @@ Or with additional parameters:
 build/bin/llama-cli -hf ggml-org/gemma-3-1b-it-GGUF -ngl 99 -t 8 -b 512 --ctx-size 16384
 ```
 
-On an APU like the 8945HS, the CPU and GPU share the same memory. You can get a massive speed boost by enabling Unified Memory Architecture (UMA) support during compilation so the system doesn't waste time copying data between "system" and "video" RAM using cmake flag: `-DGGML_HIP_UMA=ON`. This must be enabled in BIOS. (It is with 4GB reserved for the GPU).
+On an APU like the 8945HS, the CPU and GPU share the same memory. You can get a massive speed boost by enabling Unified Memory Architecture (UMA) support during compilation so the system doesn't waste time copying data between "system" and "video" RAM using cmake flag: `-DGGML_HIP_UMA=ON`. This must be enabled in BIOS. On my firmware I set it to *AUTO* with  1GB reserved for the GPU.
 
 ## 8) To run Llama 3.2 model use:
 ```bash
@@ -73,12 +73,12 @@ build/bin/llama-cli -hf bartowski/Llama-3.2-3B-Instruct-GGUF:Q4_K_M -ngl 99 -t 8
 
 Or Llama3.3 8B:
 ```bash
-build/bin/llama-cli -m ~/.cache/llama.cpp/bartowski_allura-forge_Llama-3.3-8B-Instruct-GGUF_allura-forge_Llama-3.3-8B-Instruct-Q4_K_M.gguf -fa on -ngl 33 -c 8192
+build/bin/llama-cli -m ~/.cache/llama.cpp/bartowski_allura-forge_Llama-3.3-8B-Instruct-GGUF_allura-forge_Llama-3.3-8B-Instruct-Q4_K_M.gguf -fa on -ngl 33 -c 8192 -cram -1
 ```
 
 Or QWEN3 30B (runs fine using about 20GB) (Use this for coding):
 ```bash
-build/bin/llama-cli -hf mradermacher/Huihui-Qwen3-Coder-30B-A3B-Instruct-abliterated-i1-GGUF:Q4_K_M -fa on -c 32767  -ngl 49 --color on
+build/bin/llama-cli -hf mradermacher/Huihui-Qwen3-Coder-30B-A3B-Instruct-abliterated-i1-GGUF:Q4_K_M -fa on -c 32767  -ngl 49 --color on -cram -1
 ```
 
 ## 9) Similar for server on port 8080 (default, else use e.g. `--port 8000`)
