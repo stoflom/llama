@@ -59,7 +59,7 @@ Or with additional parameters:
 build/bin/llama-cli -hf ggml-org/gemma-3-1b-it-GGUF -ngl 99 -t 8 -b 512 --ctx-size 16384
 ```
 
-### On an APU like the 8945HS, the CPU and GPU share the same memory. You can get a massive speed boost by enabling Unified Memory Architecture (UMA) support during compilation so the system doesn't waste time copying data between "system" and "video" RAM using cmake flag: `-DGGML_HIP_UMA=ON`. This must be enabled in BIOS. (It is with 4GB reserved for the GPU).
+On an APU like the 8945HS, the CPU and GPU share the same memory. You can get a massive speed boost by enabling Unified Memory Architecture (UMA) support during compilation so the system doesn't waste time copying data between "system" and "video" RAM using cmake flag: `-DGGML_HIP_UMA=ON`. This must be enabled in BIOS. (It is with 4GB reserved for the GPU).
 
 ## 8) To run Llama 3.2 model use:
 ```bash
